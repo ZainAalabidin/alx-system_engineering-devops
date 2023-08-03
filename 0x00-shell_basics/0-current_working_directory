@@ -1,2 +1,3 @@
-#!/bin/bash
-pwd 0-current_working_directory
+#!/bin/bash 
+whoami 0-current_working_directory
+
