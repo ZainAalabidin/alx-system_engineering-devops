@@ -1,2 +1,2 @@
-VimCrypt~03!4Qø„ºÛCûÔˆÁ-Öév!÷*%jª¾8v	tyÖ½:›Uk%ñ
-ÀŞ°ÁşÖäHİßˆ£]ûËcd5â
+#!/usr/bin/env ruby
+puts ARGV[0].scan(/^h.n$/).join
