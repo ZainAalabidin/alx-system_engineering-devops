@@ -1,0 +1,8 @@
+sudo apt-get install ufw             # Install UFW
+sudo ufw allow 22/tcp                # Allow SSH
+sudo ufw allow 80/tcp                # Allow HTTP
+sudo ufw allow 443/tcp               # Allow HTTPS
+sudo ufw default deny incoming       # Deny all other incoming connections
+sudo ufw default allow outgoing      # Allow all outgoing connections
+sudo ufw enable                      # Enable UFW
+sudo ufw status verbose              # Verify the configuration
