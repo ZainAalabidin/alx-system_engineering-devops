@@ -1,0 +1,21 @@
+When you type "google.com" in your browser and press Enter, the following steps occur:
+1.DNS Request:
+ The browser checks its cache for the IP address of "google.com". If not found, it queries a DNS resolver, which contacts the root, TLD, and authoritative DNS servers to get the IP address.
+2.TCP/IP Connection: 
+The browser initiates a TCP connection with the Google server using a three-way handshake (SYN, SYN-ACK, ACK).
+3.Firewall Check:
+ The request passes through client-side and server-side firewalls, ensuring security policies are met.
+4.HTTPS/SSL: 
+A TLS handshake occurs to establish a secure, encrypted connection. The server's SSL certificate is verified by the browser.
+5.Load Balancer: 
+The request is routed through Google’s load balancer, which distributes traffic across multiple servers to ensure efficient handling.
+6.Web Server:
+ The web server receives the request and, for dynamic content, forwards it to the application server.
+7.Application Server:
+ The application server processes the request, executes business logic, and interacts with databases as needed.
+8.Database Interaction:
+ The application server queries the database to retrieve necessary data and constructs the response.
+9.Response Sent: 
+The processed data is sent back through the web server and load balancer, traveling over the secure TLS connection to the browser.
+10.Rendering the Page:
+ The browser parses the HTML, requests additional resources, and renders the Google homepage for you to view and interact with.

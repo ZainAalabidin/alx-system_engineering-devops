@@ -1,2 +1,1 @@
-#!/bin/bash
-aha
+devops directory
