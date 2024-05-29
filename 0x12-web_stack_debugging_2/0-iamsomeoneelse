@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+#Bash script that accepts one argument
+#run the whoami command under the user passed as an argument
 # Check if the script received one argument
 if [ "$#" -ne 1 ]; then
 	echo "Usage: $0 <username>"
@@ -9,3 +10,4 @@ fi
 USER=$1
 
 sudo -u $USER whoami
+
