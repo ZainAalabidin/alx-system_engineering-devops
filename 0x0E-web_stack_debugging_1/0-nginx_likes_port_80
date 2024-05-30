@@ -2,5 +2,5 @@
 # Bash script that configures a server
 # Nginx must be running, and listening on port 80
 # Ensure Nginx service is enabled and started
-sudo sed -i 's/listen 8080;/listen 80;/g' /etc/nginx/sites-available/default
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-available/default
 sudo service nginx restart
