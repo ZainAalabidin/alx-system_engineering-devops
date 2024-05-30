@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Bash script that configures a server
-# Nginx must be running, and listening on port 80
-# Ensure Nginx service is enabled and started
+#Bash script that configures a server
+#Nginx must be running, and listening on port 80
+#Ensure Nginx service is enabled and started
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx restart
