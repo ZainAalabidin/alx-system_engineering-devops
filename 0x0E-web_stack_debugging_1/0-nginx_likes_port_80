@@ -2,9 +2,5 @@
 # Bash script that configures a server
 # Nginx must be running, and listening on port 80
 # Ensure Nginx service is enabled and started
-sudo systemctl enable nginx
-sudo systemctl start nginx
-# Ensure the Nginx configuration is set to listen on port 80
 sudo sed -i 's/listen 8080;/listen 80;/g' /etc/nginx/sites-available/default
-# Restart Nginx to apply configuration changes
 sudo systemctl restart nginx
