@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Bash script that configures a server
+# Nginx must be running, and listening on port 80
+# Ensure Nginx service is enabled and started
+sudo systemctl enable nginx
+sudo systemctl start nginx
+
+# Ensure the Nginx configuration is set to listen on port 80
+sudo sed -i 's/listen 8080;/listen 80;/g' /etc/nginx/sites-available/default
+sudo sed -i 's/#user www-data/user nginx/' /etc/nginx/nginx.conf
+
+# Stop Apache if it is running
+if sudo systemctl is-active --quiet apache2; then
+    sudo systemctl stop apache2
+fi
+
+# Check if UFW (Uncomplicated Firewall) is installed and allow traffic on port 80
+if sudo ufw status | grep -qw 'inactive'; then
+    sudo ufw allow 80/tcp
+    sudo ufw enable
+fi
+
+# Restart Nginx to apply configuration changes
+sudo systemctl restart nginx
