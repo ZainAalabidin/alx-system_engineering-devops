@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Bash script that configures a server
+sudo sed -i 's/listen 8080;/listen 80;/g' /etc/nginx/sites-available/default
+sudo systemctl restart nginx
+pkill -o nginx
