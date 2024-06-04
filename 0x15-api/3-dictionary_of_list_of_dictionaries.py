@@ -16,7 +16,6 @@ if __name__ == "__main__":
     users_url = "https://jsonplaceholder.typicode.com/users"
     todos_url = "https://jsonplaceholder.typicode.com/todos"
 
-    
     users_response = requests.get(users_url)
 
     users_data = users_response.json()
@@ -27,19 +26,19 @@ if __name__ == "__main__":
 
     all_tasks = {}
     for user in users_data:
-        user_id = user['id']
-        username = user['username']
+        user_id = user["id"]
+        username = user["username"]
         all_tasks[str(user_id)] = []
 
         for task in todos_data:
             task_info = {
-                "task": task.get('title'),
-                "completed": task.get('completed'),
-                "username": username
+                "task": task.get("title"),
+                "completed": task.get("completed"),
+                "username": username,
             }
             all_tasks[str(user_id)].append(task_info)
 
     json_filename = "todo_all_employees.json"
 
-    with open(json_filename, mode='w') as file:
+    with open(json_filename, mode="w") as file:
         json.dump(all_tasks, file)

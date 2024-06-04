@@ -18,18 +18,19 @@ if __name__ == "__main__":
     users_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
     todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
 
-    
     user_response = requests.get(users_url)
 
     user_data = user_response.json()
-    user_name = user_data.get('name')
+    user_name = user_data.get("name")
 
     todos_response = requests.get(todos_url)
 
     todos_data = todos_response.json()
     csv_filename = f"{user_id}.csv"
 
-    with open(csv_filename, mode='w', newline='') as file:
+    with open(csv_filename, mode="w", newline="") as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for task in todos_data:
-            writer.writerow([user_id, user_name, task.get('completed'), task.get('title')])
+            writer.writerow(
+                [user_id, user_name, task.get("completed"), task.get("title")]
+            )
