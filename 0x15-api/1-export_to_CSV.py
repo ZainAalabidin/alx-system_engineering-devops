@@ -20,7 +20,6 @@ if __name__ == "__main__":
 
     with open(csv_filename, mode="w", newline="") as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
-        for task in todos_data:
-            writer.writerow(
+        [writer.writerow(
                 [user_id, username, task.get("completed"), task.get("title")]
-            )
+        ) for task in todos_data]
