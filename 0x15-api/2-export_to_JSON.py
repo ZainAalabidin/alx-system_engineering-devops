@@ -1,10 +1,5 @@
 #!/usr/bin/python3
-"""
-Python script that, using this REST API,
-for a given employee ID, returns information
-about his/her TODO list progress.
-"""
-
+"""export data in the JSON format."""
 import requests
 import sys
 import json
@@ -12,33 +7,23 @@ import json
 
 if __name__ == "__main__":
 
-    user_id = int(sys.argv[1])
-
-    # Base URLs for the API
-    users_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
-
-    user_response = requests.get(users_url)
-
-    user_data = user_response.json()
-    user_name = user_data.get("name")
-
-    todos_response = requests.get(todos_url)
-
-    todos_data = todos_response.json()
-    csv_filename = f"{user_id}.csv"
+    user_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    user_data = requests.get(url + "users/{}".format(user_id)).json()
+    todos_data = requests.get(url + "todos", params={"userId": user_id}).json()
+    username = user_data.get("username")
 
     tasks = []
     for task in todos_data:
         task_info = {
             "task": task.get("title"),
             "completed": task.get("completed"),
-            "username": user_name,
+            "username": username,
         }
         tasks.append(task_info)
 
     user_tasks = {str(user_id): tasks}
-    json_filename = f"{user_id}.json"
+    json_filename = "{}.json".format(user_id)
 
     with open(json_filename, mode="w") as file:
         json.dump(user_tasks, file)
