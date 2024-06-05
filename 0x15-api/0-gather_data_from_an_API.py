@@ -10,21 +10,13 @@ import sys
 
 
 if __name__ == "__main__":
-
+ 
     user_id = int(sys.argv[1])
 
-    # Base URLs for the API
-    users_url = f"https://jsonplaceholder.typicode.com/users/{user_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
-
-    user_response = requests.get(users_url)
-
-    user_data = user_response.json()
+    url = "https://jsonplaceholder.typicode.com/"
+    user_data = requests.get(url + "users/{}".format(user_id)).json()
+    todos_data = requests.get(url + "todos", params={"userId": user_id}).json()
     employee_name = user_data.get("name")
-
-    todos_response = requests.get(todos_url)
-
-    todos_data = todos_response.json()
 
     completed_tasks = [todo for todo in todos_data if todo.get("completed")]
     total_number_of_tasks = len(todos_data)
