@@ -2,16 +2,13 @@
 """export data in the JSON format."""
 import json
 import requests
-import sys
 
 
 if __name__ == "__main__":
 
-    user_id = sys.argv[1]
     url = "https://jsonplaceholder.typicode.com/"
-    user_data = requests.get(url + "users/{}".format(user_id)).json()
-    todos_data = requests.get(url + "todos", params={"userId": user_id}).json()
-    username = user_data.get("username")
+    user_data = requests.get(url + "users").json()
+    todos_data = requests.get(url + "todos").json()
 
     all_tasks = {}
     for user in user_data:
