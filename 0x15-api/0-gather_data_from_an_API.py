@@ -10,7 +10,7 @@ import sys
 
 
 if __name__ == "__main__":
- 
+
     user_id = int(sys.argv[1])
 
     url = "https://jsonplaceholder.typicode.com/"
@@ -23,7 +23,9 @@ if __name__ == "__main__":
     number_of_done_tasks = len(completed_tasks)
 
     print(
-        f"Employee {employee_name} is done with tasks({number_of_done_tasks}/{total_number_of_tasks}):"
+        "Employee {} is done with tasks({}/{}):".format(
+            employee_name, number_of_done_tasks, total_number_of_tasks
+        )
     )
     for task in completed_tasks:
         print(f"\t {task.get('title')}")
