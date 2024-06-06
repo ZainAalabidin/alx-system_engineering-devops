@@ -36,7 +36,7 @@ if __name__ == "__main__":
                 }
                 user_tasks.append(task_info)
 
-        # Store the user_tasks list in the all_tasks dictionary, indexed by user ID
+        # Store the user_tasks list in the all_tasks dictionary.
         all_tasks[str(user_id)] = user_tasks
 
     # Export the all_tasks dictionary to a JSON file
