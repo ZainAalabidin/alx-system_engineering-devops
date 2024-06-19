@@ -11,7 +11,7 @@ import requests
 def recurse(subreddit, hot_list=[], after=None):
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     headers = {
-        "User-Agent": "Python/requests:subreddit.hot.post.fetcher:v1.0 (by /u/yourusername)"
+        "User-Agent": "Python/requests:subreddit.hot.post.fetcher:v1.0"
     }
     params = {"limit": 100}
     if after:
